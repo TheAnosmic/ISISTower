@@ -7,7 +7,7 @@ enum ETILE_STATE
     SLOWING = 2,
 }
 
-public class Tile : MonoBehaviour{
+public class Tile : MonoBehaviour {
 
     [SerializeField]
     private ETILE_STATE State { get; set; }
