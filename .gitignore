@@ -149,7 +149,6 @@ artifacts/
 *_i.c
 *_p.c
 *_i.h
-*.meta
 *.pgc
 *.pgd
 *.rsp
