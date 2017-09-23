@@ -1,8 +1,15 @@
 ﻿using UnityEngine;
-public class SceneManager : MonoBehaviour {
+using System.Collections.Generic;
+
+public class StageManager : MonoBehaviour {
 
     [SerializeField]
-    IDynamicStageEntity[] dynamicEntities;
+    private static List<IDynamicStageEntity> dynamicEntities = new List<IDynamicStageEntity>();
+
+    public static void AddDynamicEntity(IDynamicStageEntity entity)
+    {
+        dynamicEntities.Add(entity);
+    }
 
 	void Start () {
         foreach (IDynamicStageEntity entity in dynamicEntities)
@@ -11,11 +18,12 @@ public class SceneManager : MonoBehaviour {
         }		
 	}
 
-    private void Update()
+    private void FixedUpdate()
     {
+        Debug.Log("updating stage");
         foreach (IDynamicStageEntity entity in dynamicEntities)
         {
-            entity.UpdateMovement();
+            entity.UpdateEntity();
         }
     }
 }
