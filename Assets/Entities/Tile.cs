@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[System.Serializable]
 enum ETILE_STATE
 {
     SOLID = 0,
@@ -10,5 +11,5 @@ enum ETILE_STATE
 public class Tile : MonoBehaviour {
 
     [SerializeField]
-    private ETILE_STATE State { get; set; }
+    private ETILE_STATE State;
 }
