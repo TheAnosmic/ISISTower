@@ -9,6 +9,8 @@ public class Player : MonoBehaviour, IDynamicStageEntity {
     [SerializeField]
     private Transform spawnPosition;
 
+    private IPickup _pickup;
+
     public void Start()
     {
         controller = GetComponent<IController>();
@@ -23,5 +25,19 @@ public class Player : MonoBehaviour, IDynamicStageEntity {
     public void UpdateEntity()
     {
         controller.UpdateMovement();
+    }
+
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Pickup"))
+        {
+            if (_pickup == null)
+            {
+                _pickup = other.GetComponent<PickupSpawner>().Pickup();
+                _pickup.Use(this);
+                _pickup = null;
+            }
+        }
     }
 }
